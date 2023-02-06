@@ -14,22 +14,28 @@ def index():
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=generate_prompt(animal),
-            temperature=0.6,
+            max_tokens=200,
+            temperature=0.1,
         )
-        return redirect(url_for("index", result=response.choices[0].text))
+        print("response: ",response, "\n")
+        return redirect(url_for("index", result=animal + response.choices[0].text))
 
     result = request.args.get("result")
-    return render_template("index.html", result=result)
+    # result ="a\nb\nc"
+    print("result: ", result)
+    r0=r1=r2=r3=""   
+    if result and len(result.split("\n"))>=4:
+        r0 = result.split("\n")[0]
+        r1 = result.split("\n")[1]
+        r2 = result.split("\n")[2]
+        r3 = result.split("\n")[3]
+    return render_template("index.html", result=result, r0=r0,r1=r1,r2=r2,r3=r3)
 
 
 def generate_prompt(animal):
-    return """Suggest three names for an animal that is a superhero.
+    return """Suggest the best 3 airline paths to travel to Dubai from my location? And how long will it take? 
 
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: {}
-Names:""".format(
-        animal.capitalize()
+Location: {}
+Path:""".format(
+        animal.strip()
     )

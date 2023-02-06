@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <title>OpenAI Quickstart</title>
+  <title>Dubai Travel Agency</title>
   <link
     rel="shortcut icon"
     href="{{ url_for('static', filename='dog.png') }}"
@@ -9,13 +9,21 @@
 </head>
 
 <body>
-  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
-  <h3>Name my pet</h3>
+  <img src="{{ url_for('static', filename='download.jfif') }}" class="icon" />
+  <h3>Airlines to Travel Dubai </h3>
+  <h4>Enter your city and country, we suggest you the best airways to travel to Dubai from your location! </h4>
   <form action="/" method="post">
-    <input type="text" name="animal" placeholder="Enter an animal" required />
-    <input type="submit" value="Generate names" />
+    <input type="text" name="animal" placeholder="New York, USA" required />
+    <input type="submit" value="Find Airlines" />
   </form>
-  {% if result %}
-  <div class="result">{{ result }}</div>
+  {% if r0 %}
+  <h3>{{r0}} To Dubai, UAE</h3>
+  <div class="result">{{ r1 }}</div>
+  {% endif %}
+  {% if r2 %}
+  <div class="result">{{ r2 }}</div>
+  {% endif %}
+  {% if r3 %}
+  <div class="result">{{ r3 }}</div>
   {% endif %}
 </body>
