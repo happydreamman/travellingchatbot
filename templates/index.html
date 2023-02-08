@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <title>Dubai Travel Agency</title>
+  <title>Travel Agency</title>
   <link
     rel="shortcut icon"
     href="{{ url_for('static', filename='dog.png') }}"
@@ -10,14 +10,14 @@
 
 <body>
   <img src="{{ url_for('static', filename='download.jfif') }}" class="icon" />
-  <h3>Airlines to Travel Dubai </h3>
-  <h4>Enter your city and country, we suggest you the best airways to travel to Dubai from your location! </h4>
+  <h3>Airlines to Travel New York, USA </h3>
+  <h4>Enter your city and country, we recommend you the best airways to travel to New York from your location! </h4>
   <form action="/" method="post">
-    <input type="text" name="animal" placeholder="New York, USA" required />
+    <input type="text" name="animal" placeholder="Dubai, UAE" required />
     <input type="submit" value="Find Airlines" />
   </form>
   {% if r0 %}
-  <h3>{{r0}} To Dubai, UAE</h3>
+  <h3>{{r0}} To New York, USA</h3>
   <div class="result">{{ r1 }}</div>
   {% endif %}
   {% if r2 %}

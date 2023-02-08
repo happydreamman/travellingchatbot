@@ -33,7 +33,7 @@ def index():
 
 
 def generate_prompt(animal):
-    return """Suggest the best 3 airline paths to travel to Dubai from my location? And how long will it take? 
+    return """Suggest the best 3 airline paths to travel to New York, USA from my location? And how long will it take? 
 
 Location: {}
 Path:""".format(
