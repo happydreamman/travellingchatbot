@@ -39,7 +39,7 @@ h3 {
 form {
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 800px;
 }
 input[type="text"] {
   padding: 12px 16px;
@@ -50,6 +50,12 @@ input[type="text"] {
 ::placeholder {
   color: #8e8ea0;
   opacity: 1;
+}
+textarea{
+  padding: 12px 16px;
+  border: 1px solid #10a37f;
+  border-radius: 4px;
+  margin-bottom: 24px;
 }
 input[type="submit"] {
   padding: 12px 0;

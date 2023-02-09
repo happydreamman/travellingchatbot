@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <title>Travel Agency</title>
+  <title>ScoreAI</title>
   <link
     rel="shortcut icon"
     href="{{ url_for('static', filename='dog.png') }}"
@@ -10,20 +10,21 @@
 
 <body>
   <img src="{{ url_for('static', filename='download.jfif') }}" class="icon" />
-  <h3>Airlines to Travel New York, USA </h3>
-  <h4>Enter your city and country, we recommend you the best airways to travel to New York from your location! </h4>
+  <h3>Score System </h3>
+  <h4>Enter your statement you want to get a score out 0f 10.</h4>
   <form action="/" method="post">
-    <input type="text" name="animal" placeholder="Dubai, UAE" required />
-    <input type="submit" value="Find Airlines" />
+    <!-- <input type="text" name="animal" placeholder="3 is lower than 5" required /> -->
+    <textarea name = "animal" rows="10" cols="60" required ></textarea>
+    <input type="submit" value="Get Score" />
   </form>
-  {% if r0 %}
-  <h3>{{r0}} To New York, USA</h3>
-  <div class="result">{{ r1 }}</div>
+  {% if result %}
+  <!-- <h3>Your score is {{r0}}</h3> -->
+  <div class="result">{{result}}</div>
   {% endif %}
-  {% if r2 %}
+  <!-- {% if r2 %}
   <div class="result">{{ r2 }}</div>
   {% endif %}
   {% if r3 %}
   <div class="result">{{ r3 }}</div>
-  {% endif %}
+  {% endif %} -->
 </body>
