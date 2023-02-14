@@ -11,14 +11,20 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 def index():
     if request.method == "POST":
         animal = request.form["animal"]
-        response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=generate_prompt(animal),
-            max_tokens=10,
-            temperature=0.1,
-        )
-        print("response: ",response, "\n")
-        return redirect(url_for("index",result="Score: " + response.choices[0].text))
+        try:
+            response = openai.Completion.create(
+                model="curie:ft-blockx-2023-02-12-13-06-40",
+                prompt=generate_prompt(animal),
+                max_tokens=40,
+                temperature=0.1,
+            )
+            print("response: ",response, "\n")
+        except openai.error.RateLimitError as e:
+            print(e.message)
+            result = "The server is currently overloaded with other requests. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if the error persists."
+            return redirect(url_for("index",result="" +result))
+
+        return redirect(url_for("index",result="" + response.choices[0].text))
 
     result = request.args.get("result")
     # result ="a\nb\nc"
@@ -33,8 +39,6 @@ def index():
 
 
 def generate_prompt(animal):
-    return """Answer me with intelligent q. What is the score of the statement below out of 10?
-
-{}""".format(
+    return """{}""".format(
         animal.strip()
     )
