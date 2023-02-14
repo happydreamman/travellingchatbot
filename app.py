@@ -20,7 +20,7 @@ def index():
             )
             print("response: ",response, "\n")
         except openai.error.RateLimitError as e:
-            print(e.message)
+            print(e)
             result = "The server is currently overloaded with other requests. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if the error persists."
             return redirect(url_for("index",result="" +result))
 
