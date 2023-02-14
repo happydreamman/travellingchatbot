@@ -11,6 +11,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 def index():
     if request.method == "POST":
         animal = request.form["animal"]
+        print("question: ")
         try:
             response = openai.Completion.create(
                 model="curie:ft-blockx-2023-02-12-13-06-40",
@@ -24,7 +25,7 @@ def index():
             result = "The server is currently overloaded with other requests. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if the error persists."
             return redirect(url_for("index",result="" +result))
 
-        return redirect(url_for("index",result="" + response.choices[0].text))
+        return redirect(url_for("index",result="" + response.choices[0].text.split(".")[0]))
 
     result = request.args.get("result")
     # result ="a\nb\nc"
