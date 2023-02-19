@@ -33,7 +33,7 @@ def index():
 
 
 def generate_prompt(animal):
-    return """Answer me with intelligent q. What is the score of the statement below out of 10?
+    return """Answer me with one digit number. What is the score of the statement below out of 10?
 
 {}""".format(
         animal.strip()
